@@ -16,7 +16,7 @@ import (
 
 var (
 	listenPort = flag.String("listen-port", "8080", "port to listen on")
-	data_path = flag.String("data-path", "data", "directory to log data to")
+	data_path  = flag.String("data-path", "data", "directory to log data to")
 )
 
 type BlsReq struct {
@@ -108,7 +108,7 @@ func ParseRequestPost(r *http.Request) (*BlsReq, error) {
 	}
 
 	if br.Year == "" {
-	  return nil, errors.New("Year must be set")
+		return nil, errors.New("Year must be set")
 	}
 
 	return &br, nil

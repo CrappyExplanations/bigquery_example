@@ -14,7 +14,7 @@ import (
 )
 
 type Bls struct {
-	Project string
+	Project  string
 	DataPath string
 }
 
@@ -40,7 +40,7 @@ func NewBLS(dataPath string) Bls {
 
 func (b *Bls) Query(year string) (*bigquery.RowIterator, error) {
 	//validate that we have an actual number provided for the year
-	if  _, err := strconv.Atoi(year); err != nil {
+	if _, err := strconv.Atoi(year); err != nil {
 		return nil, errors.New("Invalid year: " + year)
 	}
 
