@@ -3,11 +3,9 @@ package queries
 import (
 	"context"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"os"
-	"strconv"
 
 	"cloud.google.com/go/bigquery"
 	"google.golang.org/api/iterator"
@@ -39,11 +37,6 @@ func NewBLS(dataPath string) Bls {
 }
 
 func (b *Bls) Query(year string) (*bigquery.RowIterator, error) {
-	//validate that we have an actual number provided for the year
-	if _, err := strconv.Atoi(year); err != nil {
-		return nil, errors.New("Invalid year: " + year)
-	}
-
 	ctx := context.Background()
 
 	client, err := bigquery.NewClient(ctx, b.Project)
